@@ -1,0 +1,48 @@
+.task-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border-left: 5px solid; /* Para indicar o status */
+}
+
+.task-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.task-card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.task-card p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.task-meta {
+  font-size: 0.85rem;
+  color: #888;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Estilos baseados no status */
+.task-card.pending {
+  border-left-color: #ffc107; /* Amarelo */
+}
+
+.task-card.in_progress {
+  border-left-color: #007bff; /* Azul */
+}
+
+.task-card.completed {
+  border-left-color: #28a745; /* Verde */
+}

@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.env
+.venv/
+venv/
+
+# Node
+node_modules/
+dist/
+.env
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+*.env
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+crash.log
+*.tfvars

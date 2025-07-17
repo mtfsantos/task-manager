@@ -1,0 +1,14 @@
+fastapi==0.104.1
+uvicorn==0.23.2
+sqlalchemy==2.0.22
+pydantic==2.8.2
+pydantic_settings==2.10.1
+python-jose[cryptography]==3.5.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.6
+alembic==1.16.4
+SQLAlchemy-Utils==0.41.2
+
+# For testing
+pytest==7.4.3
+httpx==0.25.1
