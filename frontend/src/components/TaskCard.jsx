@@ -9,7 +9,11 @@ const TaskCard = ({ task, onClick }) => {
       <p>{task.description}</p>
       <div className="task-meta">
         <span>Status: {task.status.replace('_', ' ').toUpperCase()}</span>
-        <span>Criado: {new Date(task.created_at).toLocaleDateString()}</span>
+        {task.updated_at ? (
+          <span>Updated at: {new Date(task.updated_at).toLocaleDateString()}</span>
+        ) : (
+          <span>Created at: {new Date(task.created_at).toLocaleDateString()}</span>
+        )}
       </div>
     </div>
   );
