@@ -6,6 +6,7 @@ from contextlib import asynccontextmanager
 
 from app.api.endpoints import tasks, auth
 from app.core.logging_config import setup_logging # New import for logging setup
+from app.core.config import settings
 
 # Configure logging at the start
 setup_logging()
@@ -30,10 +31,12 @@ app = FastAPI(
 )
 
 # Configure CORS
-origins = [
-    "http://localhost",
-    "http://localhost:3000",  # Frontend URL
-]
+# Example environment variable: ALLOWED_ORIGINS="http://localhost:3000,https://yourapp.com"
+# if ALLOWED_ORIGINS is not set, it defaults to "http://localhost:3000"
+# Make sure there are no unwanted spaces in the origins.
+allowed_origins_str = settings.ALLOWED_ORIGINS # Default value for dev
+origins = [origin.strip() for origin in allowed_origins_str.split(',')]
+logger.info(f"Allowed origins set to: {origins}")  # Log the allowed origins
 
 app.add_middleware(
     CORSMiddleware,
@@ -47,6 +50,8 @@ app.add_middleware(
 app.include_router(tasks.router, prefix="/api/v1", tags=["tasks"])
 app.include_router(auth.router, prefix="/api/v1", tags=["authentication"])
 
-@app.get("/")
-async def read_root():
-    return {"message": "Welcome to the Task Management API!"}
+@app.get("/health", tags=["Monitoring"])
+async def health_check():
+    logger.info("Health check endpoint accessed.")
+    return {"status": "ok"}
+
